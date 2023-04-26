@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type='number' id="num"> <br><br>
+
+    <button onclick="calc_fib()"> Click ME!! </button> <br>
+</body>
+<script>
+
+
+    function calc_fib() {
+        
+        var n = document.getElementById("num").value;
+
+        function fib(x) 
+        {
+            if (x == 0)
+                return 0;
+
+            else if (x ==1)
+                return 1;
+
+            return fib(x-1) + fib(x-2);
+        }
+
+        for (var i = 0; i <= n; i++) 
+        {
+            document.write("<h1>" + fib(i) + "</h1>");
+        }
+       
+    }
+
+</script>
+
+</html>

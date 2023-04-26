@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type='number' id="num"> <br><br>
+
+    <button onclick="calc_fib()"> Click ME!! </button> <br>
+</body>
+<script>
+
+
+    function calc_fib() {
+        
+        var n = document.getElementById("num").value;
+
+        document.write("<h2>Number and it's Square is :- </h2>");
+
+        for (var i = 1; i <= n; i++) 
+            document.write("<h3>" + i+"<sup>2</sup> = " +i*i+ "</h3>");
+        
+       
+    }
+
+</script>
+
+</html>

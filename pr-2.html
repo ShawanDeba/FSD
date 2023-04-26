@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    canvas{
+        border: 2px solid black;
+    }
+</style>
+<body>
+    <canvas id="mycanvas" height="400px" width="400px" onmousedown="start_drawing(event)" onmousemove="draw_line(event)" onmouseup="stop_drawing(event)"></canvas>
+
+<script>
+    var canvas = document.getElementById("mycanvas");
+    var ctx = canvas.getContext("2d");
+
+    var is_drawing=false;
+    function start_drawing(event)
+    {
+        is_drawing = true;
+        var x = event.clientX - canvas.offsetLeft;
+            var y = event.clientY - canvas.offsetTop;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+    }
+
+    function draw_line(event)
+    {
+        if(is_drawing)
+        {
+            var x = event.clientX - canvas.offsetLeft;
+                var y = event.clientY - canvas.offsetTop;
+                ctx.lineTo(x, y);
+                ctx.stroke();
+        }
+    }
+
+    function stop_drawing(event)
+    {
+        is_drawing=false;
+    }
+</script>
+</body>
+</html>

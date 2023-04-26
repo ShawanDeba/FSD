@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="name">Name:</label>
+        <input type="text" id="name"><br>
+
+        <label for="dob">DOB:</label>
+        <input type="date" id="dob"><br>
+
+        <div id="email-grp" >
+            <label for="email">Email:</label>
+            <input type="email" id="email">
+        </div><br>
+
+        <div id="age-grp">
+            <label for="age">Age:</label>
+            <input type="range" id="age">
+        </div><br>
+
+        <div id="web-grp" >
+            <label for="url">Url:</label>
+            <input type="url" id="url">
+        </div><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+
+<script>
+    const ag = document.getElementById('age-grp');
+    const eg = document.getElementById('email-grp');
+    const wg = document.getElementById('web-grp');
+
+    ag.style.display = "none";
+    eg.style.display = "none";
+    wg.style.display = "none";
+
+    document.getElementById('dob').addEventListener('change', function() {
+        var age = calc_age(this.value);
+
+        if (age < 18) {
+            ag.style.display = "none";
+            eg.style.display = "none";
+            wg.style.display = "none";
+        }
+
+        else if (age >= 18 && age < 25) {
+            ag.style.display = "block";
+            eg.style.display = "block";
+            wg.style.display = "none";
+        }
+
+        else {
+            ag.style.display = "block";
+            eg.style.display = "block";
+            wg.style.display = "block";
+        }
+    });
+
+
+    function calc_age(birthday) {
+        const today = new Date();
+        const birth_date = new Date(birthday);
+
+        let age = today.getFullYear() - birth_date.getFullYear();
+        const month = today.getMonth() - birth_date.getMonth();
+
+        if (month < 0 || (month === 0 && today.getDay() < birth_date.getDay())) {
+            age--;
+        }
+
+        return age;
+    }
+</script>
+
+</html>
